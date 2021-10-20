@@ -36,8 +36,8 @@ def in_interval(lst:list,inter:tuple):
     '''
     result=[]
     for num in lst:
-        if num>inter[0] & num<inter[1]:
-            result.append[num]
+        if (num>inter[0]) & (num<inter[1]):
+            result.append(num)
     return result
 
 def test_in_interval():
