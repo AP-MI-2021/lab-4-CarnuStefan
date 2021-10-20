@@ -29,7 +29,7 @@ def test_parte_intreaga():
 
 def in_interval(lst:list,inter:tuple):
     '''
-    Afiseaza numerele din lista lst care se afla in intervalul inter
+    Gaseste numerele din lista lst care se afla in intervalul inter
     :param lst: lista cu numere
     :param inter: intervalul
     :return: lista cu numere din interval
@@ -43,6 +43,24 @@ def in_interval(lst:list,inter:tuple):
 def test_in_interval():
     assert in_interval([1.5, -3.3, 8, 9.8, 3.2],(-4,5)) ==[1.5, -3.3, 3.2]
 
+def frac_div_int(lst):
+    '''
+    Gaseste numerele a caror parte fractionare se divide cu partea lor intreaga
+    :param lst: lista cu numere
+    :return: lista cu numere a caror parte fractionare se divide cu partea lor intreaga
+    '''
+    result=[]
+    for num in lst:
+        num_str=(str(num))
+        lst_str=num_str.split('.')
+        if int(num)!=num:
+            if (int(lst_str[1])%int(lst_str[0]))==0:
+                result.append(num)
+    return result
+
+def test_frac_div_int():
+    assert frac_div_int([1.5, -3.3, 8, 9.8, 3.2])==[1.5, -3.3]
+
 def read_interval():
     while True:
         low=float(input('Introduceti capatul inferior al intervalului: '))
@@ -55,6 +73,7 @@ def showmenu():
     print("1. Citire lista")
     print("2. Afisarea partilor intregi lae numerelor din lista")
     print("3. Afiseaza toate numerele aflate intr-un interval dat")
+    print("4. Afiseaza toate numerele a caror parte fractionare se divide cu partea lor intreaga")
     print("x. Exit")
 
 def main():
@@ -68,10 +87,13 @@ def main():
         elif opt=='3':
             interval=read_interval()
             print( in_interval(lst,interval))
+        elif opt=='4':
+            print(frac_div_int(lst))
         elif opt=='x':
             break
 
 if __name__=='__main__':
     test_parte_intreaga()
-    test_in_interval
+    test_in_interval()
+    test_frac_div_int()
     main()
